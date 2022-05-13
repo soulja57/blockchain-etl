@@ -111,7 +111,7 @@ load_block(Conn, _Hash, Block, _Sync, Ledger, State = #state{}) ->
                 ({Key}, Acc) ->
                     case should_process_unhandled(Key, Acc, ChangeType, Ledger) of
                         true ->
-                            lager:info("processing unhandled gateway ~p", [?BIN_TO_B58(Key)]),
+                            lager:debug("processing unhandled gateway ~p", [?BIN_TO_B58(Key)]),
                             maps:put(Key, true, Acc);
                         false ->
                             Acc

@@ -78,7 +78,7 @@ load_block(Conn, _Hash, Block, _Sync, Ledger, State = #state{}) ->
                     true ->
                         Acc;
                     false ->
-                        lager:info("processing unhandled validator ~p", [?BIN_TO_B58(Key)]),
+                        lager:debug("processing unhandled validator ~p", [?BIN_TO_B58(Key)]),
                         {ok, Entry} = blockchain_ledger_v1:get_validator(Key, Ledger),
                         maps:put(Key, Entry, Acc)
                 end;

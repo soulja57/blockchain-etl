@@ -123,7 +123,7 @@ load_block(Conn, _Hash, Block, _Sync, Ledger, State = #state{}) ->
                     true ->
                         Acc;
                     false ->
-                        lager:info("processing unhandled account ~p", [?BIN_TO_B58(Key)]),
+                        lager:debug("processing unhandled account ~p", [?BIN_TO_B58(Key)]),
                         maps:put(Key, UpdateAccount(#account{address = Key}), Acc)
                 end;
             (_, Acc) ->
